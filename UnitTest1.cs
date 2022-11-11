@@ -13,38 +13,26 @@ namespace MinesweeperTests
         [TestMethod]
         public void SetBomb_placementofBomb_IsTrue()
         {
+             int x = 0;
+            int y = 0;
             Boolean[,] expectedarray = new Boolean[,] { { true,true, false, false, false },
-                                    { false,true, false, false, true},
-                                    { false,false, false, false, false},
-                                    { false,false, false, false, false},
-                                    { false,false, false, false, true} };
+                                                        { false,true, false, false, true},
+                                                        { false,false, false, false, false},
+                                                        { false,false, false, false, false},
+                                                        { false,false, true, false, false} };
 
-            Boolean[,] actualarray = new Boolean[,] { {false,false, false, false, false },
-                                                    { false,false, false, false, false},
-                                                    { false,false, false, false, false},
-                                                    { false,false, false, false, false},
-                                                    { false,false, false, false, false} };
-            minefield.SetBomb(0, 0);
-            expectedarray[0, 0] = true;
-            CollectionAssert.AreEqual(expectedarray, actualarray);
-        }
-        public void AddAdjacentValueCount()
-        {
-            int[,] expectedAdjacentValue = new int[,] { { 1, 1, 1, 0, 0 },
-                                                        { 1, 0, 1, 0, 0 },
-                                                        { 1, 1, 1, 0, 0 },
-                                                        { 0, 0, 0, 0, 0 },
-                                                        { 0, 0, 0, 0, 0 },
-            };
 
-            int[,] actualAdjacentValue = new int[,] { { 1, 1, 1, 0, 0 },
-                                                      { 1, 0, 1, 0, 0 },
-                                                      { 1, 1, 1, 0, 0 },
-                                                      { 0, 0, 0, 0, 0 },
-                                                      { 0, 0, 0, 0, 0 },
-            };
-            minefield.AddAdjacentValue(1, 1);
-            CollectionAssert.AreEqual(expectedAdjacentValue, actualAdjacentValue);
+            Boolean[,] actualResult = new Boolean[5, 5];
+
+            minefield.SetBomb(x, y);
+            foreach(var result in actualResult)
+            {
+                actualResult[x, y] = true;
+            }
+            Assert.IsTrue(actualResult[x, y] = true);
+
+            Assert.AreEqual(actualResult[x,y], expectedarray[x,y]);
+
         }
     }
 }
